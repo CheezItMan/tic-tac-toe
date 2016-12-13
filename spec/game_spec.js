@@ -84,7 +84,23 @@ describe('Game', function() {
     });
 
     it('If no winner, just say so', function() {
-      expect(game.getWinner()).toEqual('none');
+      expect(game.getWinner()).toEqual(Game.NO_WINNER);
+      game.play(0,0); // X
+      expect(game.getWinner()).toEqual(Game.NO_WINNER);
+      game.play(1,1); // O
+      expect(game.getWinner()).toEqual(Game.NO_WINNER);
+      game.play(2,2); // X
+      expect(game.getWinner()).toEqual(Game.NO_WINNER);
+      game.play(0,1); // O
+      expect(game.getWinner()).toEqual(Game.NO_WINNER);
+      game.play(0,2); // X
+      expect(game.getWinner()).toEqual(Game.NO_WINNER);
+      game.play(1,0); // O
+      expect(game.getWinner()).toEqual(Game.NO_WINNER);
+      game.play(2,1); // X
+      expect(game.getWinner()).toEqual(Game.NO_WINNER);
+      game.play(2,0); // O
+      expect(game.getWinner()).toEqual(Game.NO_WINNER);
     });
 
     it('Winner indicates the proper winner - diagonal across', function() {

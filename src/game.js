@@ -23,6 +23,7 @@ Game.MAX_SPACE = 8;
 Game.MAX_ROWS_COLS = 2;
 Game.MIN_ROWS_COLS = 0;
 Game.BLANK_SPACE = ' ';
+Game.NO_WINNER = 'none';
 
 // instance functions
 Game.prototype.currentPlayer = function() {
@@ -77,8 +78,19 @@ Game.prototype.getWinner = function() {
               return this.board[0*3 + 2] == 'X' ? this.playerX : this.playerO;
       }
 
-      return 'none';
+      return Game.NO_WINNER;
 
   };
+
+  // Static Methods
+
+Game.isValidPosition = function(row, col) {
+  if (row % 1 !== 0 || col % 1 !== 0)
+    throw "Only numeric arguments supported";
+
+    // return true if the row & col are within the max row and col.
+  return row >= Game.MIN_ROWS_COLS && row <= Game.MAX_ROS_COLS &&
+          col >= Game.MIN_ROWS_COLS && col <= Game.MAX_ROS_COLS;
+};
 
 export default Game;
