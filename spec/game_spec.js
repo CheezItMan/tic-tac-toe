@@ -83,6 +83,10 @@ describe('Game', function() {
       expect(game.getWinner).toBeFunction();
     });
 
+    it('If no winner, just say so', function() {
+      expect(game.getWinner()).toEqual('none');
+    });
+
     it('Winner indicates the proper winner - diagonal across', function() {
       game.play(0,0);
       game.play(0,1);
