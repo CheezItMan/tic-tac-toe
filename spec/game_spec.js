@@ -59,6 +59,10 @@ describe('Game', function() {
       expect(game.board[1*3 + 1]).toEqual('X');
       game.play(0, 0);
       expect(game.board[0]).toEqual('O');
+      game.play(2, 0);
+      expect(game.board[2*3 + 0]).toEqual('X');
+      game.play(0,2);
+      expect(game.board[0*3 + 2]).toEqual('O');
     });
 
   });
@@ -112,8 +116,24 @@ describe('Game', function() {
       game.board[2*3 + 1] = 'O';
       game.board[2*3 + 2] = 'O';
       expect(game.getWinner()).toEqual(game.playerO);
+    });
+    it('Winner indicates the proper winner - Vertical', function() {
+      game.board[0*3 + 0] = 'O';
+      game.board[1*3 + 0] = 'O';
+      game.board[2*3 + 0] = 'O';
+      expect(game.getWinner()).toEqual(game.playerO);
 
+      game = new Game();
+      game.board[0*3 + 1] = 'O';
+      game.board[1*3 + 1] = 'O';
+      game.board[2*3 + 1] = 'O';
+      expect(game.getWinner()).toEqual(game.playerO);
 
+      game = new Game();
+      game.board[0*3 + 2] = 'O';
+      game.board[1*3 + 2] = 'O';
+      game.board[2*3 + 2] = 'O';
+      expect(game.getWinner()).toEqual(game.playerO);
     });
   });
 });
